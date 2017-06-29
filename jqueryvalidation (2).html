@@ -1,0 +1,104 @@
+/***very fast code to implement validation on forms **/
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+<div>
+    <center>
+        <form id="form">
+            <div class="col-xs-12">
+                <input type="text" name="name" id="name" placeholder="Name" required />
+            </div>
+            <div class="col-xs-12">
+                <input type="text" name="nric" id="nric" placeholder="NRIC" required />
+            </div>
+            <div class="col-xs-12">
+                <select class="dropdown" id="gender" onChange="changeColor(this)">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+            <div class="col-xs-12">
+                <input type="text" name="mobile" id="mobile" placeholder="Mobile" required />
+            </div>
+            <div class="col-xs-12">
+                <input type="text" name="address" id="address" placeholder="Address" required />
+            </div>
+            <div class="col-xs-12">
+                <input type="email" name="email" id="email" placeholder="Email" required />
+            </div>
+            <input id="submit" class="button" type="submit" value="submit"/>
+        </form>
+    </center>
+</div>
+
+<script>
+jQuery(function ($) {
+    $('#form').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 2,
+                maxlength: 20,
+                lettersonly: true
+            },
+            ssn: {
+                required: true,
+                minlength: 9,
+                maxlength: 9,
+                nowhitespace: true
+            },
+            gender: {
+                required: true
+            },
+            mobile: {
+                required: true,
+                minlength: 10,
+                maxlength: 13,
+                digits: true
+            },
+            address: {
+                required: true,
+                minlength: 10,
+            },
+            email: {
+                required: true,
+                minlength: 6,
+                email: true
+            }
+        },
+        messages: {
+            name: {
+                required: "Please enter your name",
+                minlength: "Name should be more than 2 characters",
+                maxlength: "Name should be less than 20 characters",
+                lettersonly: "Name should contain only letters"
+            },
+            ssn: {
+                required: "Please enter your NRIC",
+                minlength: "NRIC should be more than 9 characters",
+                maxlength: "NRIC should be less than 9 characters",
+                nowhitespace: "NRIC should not have any spaces"
+            },
+            gender: {
+                required: "Please select your gender",
+            },
+            mobile: {
+                required: "Please enter your mobile number",
+                minlength: "Mobile number should be more than 10 characters",
+                maxlength: "Mobile number should be less than 13 characters",
+                digits: "Mobile number should contain only digits"
+            },
+            address: {
+                required: "Please enter your address",
+                minlength: "Address should be more than 10 characters",
+            },
+            email: {
+                required: "Please enter your email address",
+                minlength: "Password should be more than 6 characters",
+                email: "Please enter a valid email address"
+            }
+        },
+    });
+});
+</script>
