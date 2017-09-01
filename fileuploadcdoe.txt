@@ -1,0 +1,6 @@
+/***file upload code start ***/
+			$image = $request->file('image');
+			$input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+			$destinationPath = public_path('/uploads/blogimages');
+			$image->move($destinationPath, $input['imagename']);
+    		/***file upload code end ***/
